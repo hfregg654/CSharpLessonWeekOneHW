@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // 變更這些屬性的值即可修改組件的相關
 // 資訊。
 [assembly: AssemblyTitle("ConsoleHW_WeekOne")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("第三組_陳彥瑋")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("uBay株式会社")]
 [assembly: AssemblyProduct("ConsoleHW_WeekOne")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
