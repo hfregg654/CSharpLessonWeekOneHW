@@ -42,20 +42,40 @@ namespace ConsoleHW_WeekOne
                     switch (Action)
                     {
                         case "movefile":
-                            FileTool.MoveFile(Args[1], Args[2]);
+                            if (Args.ToArray().Length == 3)
+                            {
+                                FileTool.MoveFile(Args[1], Args[2]);
+                            }
+                            else
+                                Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                             break;
                         case "copyfile":
-                            FileTool.CopyFile(Args[1], Args[2]);
+                            if (Args.ToArray().Length == 3)
+                            {
+                                FileTool.CopyFile(Args[1], Args[2]);
+                            }
+                            else
+                                Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                             break;
                         case "readfile":
-                            FileTool.ReadFile(Args[1]);
+                            if (Args.ToArray().Length == 2)
+                            {
+                                FileTool.ReadFile(Args[1]);
+                            }
+                            else
+                                Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                             break;
                         case "deletefile":
                             FileTool.DeleteFile(Args.ToArray());
                             break;
                         case "createfolder":
-                            FileTool.CreateFolder(Args[1]);
-                            break;
+                            if (Args.ToArray().Length == 2)
+                            {
+                                FileTool.CreateFolder(Args[1]);
+                            }
+                            else
+                                Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
+                    break;
                         case "deletefolder":
                             FileTool.DeleteFolder(Args.ToArray());
                             break;
@@ -69,25 +89,45 @@ namespace ConsoleHW_WeekOne
                     Console.WriteLine("檔案處理，第一個參數為指令，後續參數為指定位置檔案或資料夾。");
                     Console.WriteLine("指令：MoveFile  CopyFile    ReadFile    DeleteFile  CreateFolder    DeleteFolder");
                     string[] Args = GetArgs().ToArray();
-                    if (Args.Length >= 2)
+                    if (Args.Length != 0)
                     {
                         Action = Args[0].ToLower();
                         switch (Action)
                         {
                             case "movefile":
-                                FileTool.MoveFile(Args[1], Args[2]);
+                                if (Args.Length == 3)
+                                {
+                                    FileTool.MoveFile(Args[1], Args[2]);
+                                }
+                                else
+                                    Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                                 break;
                             case "copyfile":
-                                FileTool.CopyFile(Args[1], Args[2]);
+                                if (Args.Length == 3)
+                                {
+                                    FileTool.CopyFile(Args[1], Args[2]);
+                                }
+                                else
+                                    Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                                 break;
                             case "readfile":
-                                FileTool.ReadFile(Args[1]);
+                                if (Args.Length == 2)
+                                {
+                                    FileTool.ReadFile(Args[1]);
+                                }
+                                else
+                                    Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                                 break;
                             case "deletefile":
                                 FileTool.DeleteFile(Args);
                                 break;
                             case "createfolder":
-                                FileTool.CreateFolder(Args[1]);
+                                if (Args.Length == 2)
+                                {
+                                    FileTool.CreateFolder(Args[1]);
+                                }
+                                else
+                                    Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                                 break;
                             case "deletefolder":
                                 FileTool.DeleteFolder(Args);
