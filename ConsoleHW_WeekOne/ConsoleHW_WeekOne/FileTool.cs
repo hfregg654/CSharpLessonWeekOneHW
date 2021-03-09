@@ -10,11 +10,12 @@ namespace ConsoleHW_WeekOne
 {
     public class FileTool
     {
-        public static void MoveFile(string  sourceFile,string destinationFile)
+        //所有方法若遇到任何參數上的錯誤都輸出"未輸入正確指令，已結束程式，按ENTER鍵繼續"並等待程式結束
+        public static void MoveFile(string  sourceFile,string destinationFile)              //搬移檔案，先檢查檔案存在與否，再檢查目標地是否有同名檔案
         {
-            if (!File.Exists(sourceFile))
+            if (!File.Exists(sourceFile))                                                   //若目標地有同名檔案且使用者執意執行則將搬移的檔案改名後搬移
             {
-                Console.WriteLine($"{sourceFile} 此路徑檔案不存在，按ENTER鍵繼續");
+                Console.WriteLine($"{sourceFile} 此路徑檔案不存在，按ENTER鍵繼續");         //並在開始搬移前後紀錄時間最後做程式執行的時間
                 return;
             }
             else if (File.Exists(destinationFile))
@@ -69,14 +70,14 @@ namespace ConsoleHW_WeekOne
 
             }
         }
-        public static void CopyFile(string sourceFile, string destinationFile)
+        public static void CopyFile(string sourceFile, string destinationFile)              //複製檔案，先檢查檔案存在與否，再檢查目標地是否有同名檔案            
         {
-            if (!File.Exists(sourceFile))
+            if (!File.Exists(sourceFile))                                                   //若目標地有同名檔案則詢問是否覆蓋，若選擇覆蓋照常執行
             {
-                Console.WriteLine($"{sourceFile} 此路徑檔案不存在，按ENTER鍵繼續");
+                Console.WriteLine($"{sourceFile} 此路徑檔案不存在，按ENTER鍵繼續");         //若不覆蓋且使用者執意執行則將檔案改名後複製
                 return;
-            }
-            else if (File.Exists(destinationFile))
+            }                                                                               //並在開始複製前後紀錄時間最後做程式執行的時間
+            else if (File.Exists(destinationFile))                                         
             {
                 Console.WriteLine($"{destinationFile} 此路徑已存在相同名稱檔案，是否繼續複製? Y/N");
                 string YN = Console.ReadLine();
@@ -144,10 +145,9 @@ namespace ConsoleHW_WeekOne
 
             }
         }
-        public static void ReadFile(string sourceFile)
+        public static void ReadFile(string sourceFile)                                      //讀取檔案，先檢查檔案存在與否
         {
-
-            if (!File.Exists(sourceFile))
+            if (!File.Exists(sourceFile))                                                   //並在開始讀取前後紀錄時間最後做程式執行的時間
             {
                 Console.WriteLine($"{sourceFile} 此路徑檔案不存在，按ENTER鍵繼續");
                 return;
@@ -176,11 +176,11 @@ namespace ConsoleHW_WeekOne
 
             }
         }
-        public static void DeleteFile(string[] sourceFile)
+        public static void DeleteFile(string[] sourceFile)                                  //刪除檔案，先檢查檔案存在與否，並向使用者做二次確認
         {
-            List<string> NotExists = new List<string>();
+            List<string> NotExists = new List<string>();                                    //另外創建一個集合收集無法辨認的檔案位置，並在最後做輸出
             Console.WriteLine($"確定刪除上述檔案路徑? Y/N");
-            string YN = Console.ReadLine();
+            string YN = Console.ReadLine();                                                 //並在開始刪除前後紀錄時間最後做程式執行的時間
             if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
             {
                 Console.WriteLine("已結束程式，按ENTER鍵繼續");
@@ -223,11 +223,11 @@ namespace ConsoleHW_WeekOne
                     Console.WriteLine("未輸入正確指令，已結束程式，按ENTER鍵繼續");
             }
         }
-        public static void CreateFolder(string path)
+        public static void CreateFolder(string path)                                        //創建資料夾，向使用者確認執行後檢查目標地是否有同名資料夾
         {
-            Console.WriteLine($"{path} 確定在此路徑創建資料夾? Y/N");
+            Console.WriteLine($"{path} 確定在此路徑創建資料夾? Y/N");                       //若目標地有同名資料夾且使用者執意執行則將檔案改名後創建
             string YN = Console.ReadLine();
-            if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
+            if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")                                //並在開始創建前後紀錄時間最後做程式執行的時間
             {
                 Console.WriteLine("已結束程式，按ENTER鍵繼續");
                 return;
@@ -278,11 +278,11 @@ namespace ConsoleHW_WeekOne
 
             Directory.CreateDirectory(path);
         }
-        public static void DeleteFolder(string[] path)
+        public static void DeleteFolder(string[] path)                                      //刪除資料夾，先檢查檔案存在與否，並向使用者做二次確認
         {
-            List<string> NotExists = new List<string>();
+            List<string> NotExists = new List<string>();                                    //另外創建一個集合收集無法辨認的檔案位置，並在最後做輸出
             Console.WriteLine($"確定刪除上述路徑資料夾? Y/N");
-            string YN = Console.ReadLine();
+            string YN = Console.ReadLine();                                                 //並在開始刪除前後紀錄時間最後做程式執行的時間
             if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
             {
                 Console.WriteLine("已結束程式，按ENTER鍵繼續");
