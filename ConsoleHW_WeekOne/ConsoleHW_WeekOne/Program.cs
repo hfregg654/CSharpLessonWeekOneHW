@@ -94,6 +94,10 @@ namespace ConsoleHW_WeekOne
                                 break;
                         }
                     }
+                    else
+                    {
+                        Console.WriteLine("必須有參數或輸入正確的參數，按ENTER鍵繼續");
+                    }
                 }
                 else
                 {
