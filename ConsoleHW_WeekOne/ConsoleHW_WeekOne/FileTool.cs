@@ -216,7 +216,7 @@ namespace ConsoleHW_WeekOne
                     else
                     {
                         Console.WriteLine($"刪除完成，部分檔案無法刪除或是不存在，共花費{ts}秒");
-                        Console.WriteLine($"無法刪除或不存在的檔案：{string.Join(",",NotExists.ToArray())}");
+                        Console.WriteLine($"無法刪除或不存在的檔案：{string.Join(",",NotExists.ToArray())}，按ENTER鍵繼續");
                     }
                 }
                 else
@@ -318,7 +318,7 @@ namespace ConsoleHW_WeekOne
                     else
                     {
                         Console.WriteLine($"刪除完成，部分資料夾無法刪除或是不存在，共花費{ts}秒");
-                        Console.WriteLine($"無法刪除或不存在的資料夾：{string.Join(",", NotExists.ToArray())}");
+                        Console.WriteLine($"無法刪除或不存在的資料夾：{string.Join(",", NotExists.ToArray())}，按ENTER鍵繼續");
                     }
                 }
                 else
