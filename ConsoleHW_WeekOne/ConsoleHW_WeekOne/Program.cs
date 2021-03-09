@@ -27,7 +27,7 @@ namespace ConsoleHW_WeekOne
 
         static void Main(string[] args)
         {
-            Console.WriteLine("檔案處理，第一個參數為指令，後續參數為指定位置檔案與資料夾。");
+            Console.WriteLine("檔案處理，第一個參數為指令，後續參數為指定位置檔案或資料夾。");
             Console.WriteLine("指令：MoveFile  CopyFile    ReadFile    DeleteFile  CreateFolder    DeleteFolder");
             try
             {
