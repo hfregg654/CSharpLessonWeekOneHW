@@ -42,7 +42,7 @@ namespace ConsoleHW_WeekOne
                     File.Move(sourceFile, Newname);
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
-                    Console.WriteLine($"已搬移檔案至{Newname}，共花費{ts}秒，按ENTER鍵繼續");
+                    Console.WriteLine($"已搬移檔案至{Newname}，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
                 }
                 else
                     Console.WriteLine("未輸正確入指令，已結束程式，按ENTER鍵繼續");
@@ -63,7 +63,7 @@ namespace ConsoleHW_WeekOne
                     File.Move(sourceFile, destinationFile);
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
-                    Console.WriteLine($"已搬移檔案至{destinationFile}，共花費{ts}秒，按ENTER鍵繼續");
+                    Console.WriteLine($"已搬移檔案至{destinationFile}，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
                 }
                 else
                     Console.WriteLine("未輸正確入指令，已結束程式，按ENTER鍵繼續");
@@ -105,7 +105,7 @@ namespace ConsoleHW_WeekOne
                         File.Copy(sourceFile, Newname);
                         DateTime endTime = DateTime.Now;
                         TimeSpan ts = endTime - startTime;
-                        Console.WriteLine($"已複製檔案至{Newname}，共花費{ts}秒，按ENTER鍵繼續");
+                        Console.WriteLine($"已複製檔案至{Newname}，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
                     }
                     else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                     {
@@ -114,7 +114,7 @@ namespace ConsoleHW_WeekOne
                         File.Copy(sourceFile, destinationFile,true);
                         DateTime endTime = DateTime.Now;
                         TimeSpan ts = endTime - startTime;
-                        Console.WriteLine($"已複製檔案至{destinationFile}，共花費{ts}秒，按ENTER鍵繼續");
+                        Console.WriteLine($"已複製檔案至{destinationFile}，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
                     }
                     else
                         Console.WriteLine("未輸正確入指令，已結束程式，按ENTER鍵繼續");
@@ -138,7 +138,7 @@ namespace ConsoleHW_WeekOne
                     File.Copy(sourceFile, destinationFile);
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
-                    Console.WriteLine($"已複製檔案至{destinationFile}，共花費{ts}秒，按ENTER鍵繼續");
+                    Console.WriteLine($"已複製檔案至{destinationFile}，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
                 }
                 else
                     Console.WriteLine("未輸入正確指令，已結束程式，按ENTER鍵繼續");
@@ -169,7 +169,7 @@ namespace ConsoleHW_WeekOne
                     Console.WriteLine(File.ReadAllText(sourceFile));
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
-                    Console.WriteLine($"讀取完成，共花費{ts}秒，按ENTER鍵繼續");
+                    Console.WriteLine($"讀取完成，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
                 }
                 else
                     Console.WriteLine("未輸入正確指令，已結束程式，按ENTER鍵繼續");
@@ -211,7 +211,7 @@ namespace ConsoleHW_WeekOne
                     TimeSpan ts = endTime - startTime;
                     if (NotExists.ToArray().Length == 0)
                     {
-                        Console.WriteLine($"刪除完成，共花費{ts}秒，按ENTER鍵繼續");
+                        Console.WriteLine($"刪除完成，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
                     }
                     else
                     {
@@ -258,7 +258,7 @@ namespace ConsoleHW_WeekOne
                         Directory.CreateDirectory(Newname);
                         DateTime endTime = DateTime.Now;
                         TimeSpan ts = endTime - startTime;
-                        Console.WriteLine($"已創建路徑資料夾{Newname}，共花費{ts}秒，按ENTER鍵繼續");
+                        Console.WriteLine($"已創建路徑資料夾{Newname}，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
                     }
                 }
                 else
@@ -268,7 +268,7 @@ namespace ConsoleHW_WeekOne
                     Directory.CreateDirectory(path);
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
-                    Console.WriteLine($"已創建路徑資料夾{path}，共花費{ts}秒，按ENTER鍵繼續");
+                    Console.WriteLine($"已創建路徑資料夾{path}，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
                 }
             }
             else
@@ -313,7 +313,7 @@ namespace ConsoleHW_WeekOne
                     TimeSpan ts = endTime - startTime;
                     if (NotExists.ToArray().Length == 0)
                     {
-                        Console.WriteLine($"刪除完成，共花費{ts}秒，按ENTER鍵繼續");
+                        Console.WriteLine($"刪除完成，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
                     }
                     else
                     {
