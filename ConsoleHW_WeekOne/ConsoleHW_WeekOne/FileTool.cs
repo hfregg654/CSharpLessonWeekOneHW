@@ -41,7 +41,7 @@ namespace ConsoleHW_WeekOne
                     File.Move(sourceFile, Newname);
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
-                    Console.WriteLine($"已搬移檔案{Newname}，共花費{ts}秒，按ENTER鍵繼續");
+                    Console.WriteLine($"已搬移檔案至{Newname}，共花費{ts}秒，按ENTER鍵繼續");
                 }
                 else
                     Console.WriteLine("未輸正確入指令，已結束程式，按ENTER鍵繼續");
@@ -62,7 +62,7 @@ namespace ConsoleHW_WeekOne
                     File.Move(sourceFile, destinationFile);
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
-                    Console.WriteLine($"已搬移檔案{destinationFile}，共花費{ts}秒，按ENTER鍵繼續");
+                    Console.WriteLine($"已搬移檔案至{destinationFile}，共花費{ts}秒，按ENTER鍵繼續");
                 }
                 else
                     Console.WriteLine("未輸正確入指令，已結束程式，按ENTER鍵繼續");
@@ -100,7 +100,7 @@ namespace ConsoleHW_WeekOne
                     File.Copy(sourceFile, Newname);
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
-                    Console.WriteLine($"已複製檔案{Newname}，共花費{ts}秒，按ENTER鍵繼續");
+                    Console.WriteLine($"已複製檔案至{Newname}，共花費{ts}秒，按ENTER鍵繼續");
                 }
                 else
                     Console.WriteLine("未輸正確入指令，已結束程式，按ENTER鍵繼續");
@@ -121,7 +121,7 @@ namespace ConsoleHW_WeekOne
                     File.Copy(sourceFile, destinationFile);
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
-                    Console.WriteLine($"已複製檔案{destinationFile}，共花費{ts}秒，按ENTER鍵繼續");
+                    Console.WriteLine($"已複製檔案至{destinationFile}，共花費{ts}秒，按ENTER鍵繼續");
                 }
                 else
                     Console.WriteLine("未輸入正確指令，已結束程式，按ENTER鍵繼續");
