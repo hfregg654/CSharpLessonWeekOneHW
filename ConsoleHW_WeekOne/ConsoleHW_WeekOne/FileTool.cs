@@ -87,20 +87,36 @@ namespace ConsoleHW_WeekOne
                 }
                 else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                 {
-                    Console.WriteLine("正在複製...");
-                    DateTime startTime = DateTime.Now;
-                    string Newname = Path.GetDirectoryName(destinationFile) + "\\" + Path.GetFileNameWithoutExtension(destinationFile) + "(1)" + Path.GetExtension(destinationFile);
-                    if (File.Exists(Newname))
+                    Console.WriteLine($"{destinationFile} 希望覆寫此路徑相同名稱的檔案嗎? Y/N");
+                    YN = Console.ReadLine();
+                    if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
                     {
-                        do
+                        Console.WriteLine("正在複製...");
+                        DateTime startTime = DateTime.Now;
+                        string Newname = Path.GetDirectoryName(destinationFile) + "\\" + Path.GetFileNameWithoutExtension(destinationFile) + "(1)" + Path.GetExtension(destinationFile);
+                        if (File.Exists(Newname))
                         {
-                            Newname = Path.GetDirectoryName(Newname) + "\\" + Path.GetFileNameWithoutExtension(Newname) + "(1)" + Path.GetExtension(Newname);
-                        } while (File.Exists(Newname));
+                            do
+                            {
+                                Newname = Path.GetDirectoryName(Newname) + "\\" + Path.GetFileNameWithoutExtension(Newname) + "(1)" + Path.GetExtension(Newname);
+                            } while (File.Exists(Newname));
+                        }
+                        File.Copy(sourceFile, Newname);
+                        DateTime endTime = DateTime.Now;
+                        TimeSpan ts = endTime - startTime;
+                        Console.WriteLine($"已複製檔案至{Newname}，共花費{ts}秒，按ENTER鍵繼續");
                     }
-                    File.Copy(sourceFile, Newname);
-                    DateTime endTime = DateTime.Now;
-                    TimeSpan ts = endTime - startTime;
-                    Console.WriteLine($"已複製檔案至{Newname}，共花費{ts}秒，按ENTER鍵繼續");
+                    else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
+                    {
+                        Console.WriteLine("正在複製...");
+                        DateTime startTime = DateTime.Now;
+                        File.Copy(sourceFile, destinationFile,true);
+                        DateTime endTime = DateTime.Now;
+                        TimeSpan ts = endTime - startTime;
+                        Console.WriteLine($"已複製檔案至{destinationFile}，共花費{ts}秒，按ENTER鍵繼續");
+                    }
+                    else
+                        Console.WriteLine("未輸正確入指令，已結束程式，按ENTER鍵繼續");
                 }
                 else
                     Console.WriteLine("未輸正確入指令，已結束程式，按ENTER鍵繼續");
