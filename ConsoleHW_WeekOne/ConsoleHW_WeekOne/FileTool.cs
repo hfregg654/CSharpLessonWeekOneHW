@@ -248,12 +248,12 @@ namespace ConsoleHW_WeekOne
                         Console.WriteLine("正在創建...");
                         DateTime startTime = DateTime.Now;
                         string Newname = path + "(1)";
-                        if (File.Exists(Newname))
+                        if (Directory.Exists(Newname))
                         {
                             do
                             {
                                 Newname = Newname + "(1)";
-                            } while (File.Exists(Newname));
+                            } while (Directory.Exists(Newname));
                         }
                         Directory.CreateDirectory(Newname);
                         DateTime endTime = DateTime.Now;
@@ -273,10 +273,6 @@ namespace ConsoleHW_WeekOne
             }
             else
                 Console.WriteLine("未輸入正確指令，已結束程式，按ENTER鍵繼續");
-
-
-
-            Directory.CreateDirectory(path);
         }
         public static void DeleteFolder(string[] path)                                      //刪除資料夾，先檢查檔案存在與否，並向使用者做二次確認
         {
