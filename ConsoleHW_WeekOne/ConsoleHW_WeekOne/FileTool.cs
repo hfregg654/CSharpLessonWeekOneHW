@@ -21,16 +21,23 @@ namespace ConsoleHW_WeekOne
             {
                 Console.WriteLine($"{destinationFile} 此路徑已存在相同名稱檔案，是否繼續搬移? Y/N");
                 string YN = Console.ReadLine();
-                if (YN.ToUpper() == "N"| YN.ToUpper() == "NO")
+                if (YN.ToUpper() == "N"|| YN.ToUpper() == "NO")
                 {
                     Console.WriteLine("已結束程式，按ENTER鍵繼續");
                     return;
                 }
-                else if (YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+                else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                 {
                     Console.WriteLine("正在搬移...");
                     DateTime startTime = DateTime.Now;
                     string Newname = Path.GetDirectoryName(destinationFile) + "\\" + Path.GetFileNameWithoutExtension(destinationFile) + "(1)" + Path.GetExtension(destinationFile);
+                    if (File.Exists(Newname))
+                    {
+                        do
+                        {
+                            Newname = Path.GetDirectoryName(Newname) + "\\" + Path.GetFileNameWithoutExtension(Newname) + "(1)" + Path.GetExtension(Newname);
+                        } while (File.Exists(Newname));
+                    }
                     File.Move(sourceFile, Newname);
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
@@ -43,12 +50,12 @@ namespace ConsoleHW_WeekOne
             {
                 Console.WriteLine($"{destinationFile} 確定將檔案搬入此路徑? Y/N");
                 string YN = Console.ReadLine();
-                if (YN.ToUpper() == "N" | YN.ToUpper() == "NO")
+                if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
                 {
                     Console.WriteLine("已結束程式，按ENTER鍵繼續");
                     return;
                 }
-                else if (YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+                else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                 {
                     Console.WriteLine("正在搬移...");
                     DateTime startTime = DateTime.Now;
@@ -73,16 +80,23 @@ namespace ConsoleHW_WeekOne
             {
                 Console.WriteLine($"{destinationFile} 此路徑已存在相同名稱檔案，是否繼續複製? Y/N");
                 string YN = Console.ReadLine();
-                if (YN.ToUpper() == "N" | YN.ToUpper() == "NO")
+                if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
                 {
                     Console.WriteLine("已結束程式，按ENTER鍵繼續");
                     return;
                 }
-                else if (YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+                else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                 {
                     Console.WriteLine("正在複製...");
                     DateTime startTime = DateTime.Now;
                     string Newname = Path.GetDirectoryName(destinationFile) + "\\" + Path.GetFileNameWithoutExtension(destinationFile) + "(1)" + Path.GetExtension(destinationFile);
+                    if (File.Exists(Newname))
+                    {
+                        do
+                        {
+                            Newname = Path.GetDirectoryName(Newname) + "\\" + Path.GetFileNameWithoutExtension(Newname) + "(1)" + Path.GetExtension(Newname);
+                        } while (File.Exists(Newname));
+                    }
                     File.Copy(sourceFile, Newname);
                     DateTime endTime = DateTime.Now;
                     TimeSpan ts = endTime - startTime;
@@ -95,12 +109,12 @@ namespace ConsoleHW_WeekOne
             {
                 Console.WriteLine($"{destinationFile} 確定將檔案複製至此路徑? Y/N");
                 string YN = Console.ReadLine();
-                if (YN.ToUpper() == "N" | YN.ToUpper() == "NO")
+                if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
                 {
                     Console.WriteLine("已結束程式，按ENTER鍵繼續");
                     return;
                 }
-                else if(YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+                else if(YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                 {
                     Console.WriteLine("正在複製...");
                     DateTime startTime = DateTime.Now;
@@ -126,12 +140,12 @@ namespace ConsoleHW_WeekOne
             {
                 Console.WriteLine($"{sourceFile} 確定讀取此檔案路徑? Y/N");
                 string YN = Console.ReadLine();
-                if (YN.ToUpper() == "N" | YN.ToUpper() == "NO")
+                if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
                 {
                     Console.WriteLine("已結束程式，按ENTER鍵繼續");
                     return;
                 }
-                else if (YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+                else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                 {
                     Console.WriteLine("正在讀取...");
                     DateTime startTime = DateTime.Now;
@@ -151,21 +165,21 @@ namespace ConsoleHW_WeekOne
             List<string> NotExists = new List<string>();
             Console.WriteLine($"確定刪除上述檔案路徑? Y/N");
             string YN = Console.ReadLine();
-            if (YN.ToUpper() == "N" | YN.ToUpper() == "NO")
+            if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
             {
                 Console.WriteLine("已結束程式，按ENTER鍵繼續");
                 return;
             }
-            else if (YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+            else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
             {
                 Console.WriteLine($"真的確定刪除上述檔案路徑? Y/N");
                  YN = Console.ReadLine();
-                if (YN.ToUpper() == "N" | YN.ToUpper() == "NO")
+                if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
                 {
                     Console.WriteLine("已結束程式，按ENTER鍵繼續");
                     return;
                 }
-                else if (YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+                else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                 {
                     Console.WriteLine("正在刪除...");
                     DateTime startTime = DateTime.Now;
@@ -197,27 +211,34 @@ namespace ConsoleHW_WeekOne
         {
             Console.WriteLine($"{path} 確定在此路徑創建資料夾? Y/N");
             string YN = Console.ReadLine();
-            if (YN.ToUpper() == "N" | YN.ToUpper() == "NO")
+            if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
             {
                 Console.WriteLine("已結束程式，按ENTER鍵繼續");
                 return;
             }
-            else if (YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+            else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
             {
                 if (Directory.Exists(path))
                 {
                     Console.WriteLine($"{path}此路徑已存在相同名稱資料夾，是否繼續創建? Y/N");
                     YN = Console.ReadLine();
-                    if (YN.ToUpper() == "N" | YN.ToUpper() == "NO")
+                    if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
                     {
                         Console.WriteLine("已結束程式，按ENTER鍵繼續");
                         return;
                     }
-                    else if (YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+                    else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                     {
                         Console.WriteLine("正在創建...");
                         DateTime startTime = DateTime.Now;
                         string Newname = path + "(1)";
+                        if (File.Exists(Newname))
+                        {
+                            do
+                            {
+                                Newname = Newname + "(1)";
+                            } while (File.Exists(Newname));
+                        }
                         Directory.CreateDirectory(Newname);
                         DateTime endTime = DateTime.Now;
                         TimeSpan ts = endTime - startTime;
@@ -246,21 +267,21 @@ namespace ConsoleHW_WeekOne
             List<string> NotExists = new List<string>();
             Console.WriteLine($"確定刪除上述路徑資料夾? Y/N");
             string YN = Console.ReadLine();
-            if (YN.ToUpper() == "N" | YN.ToUpper() == "NO")
+            if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
             {
                 Console.WriteLine("已結束程式，按ENTER鍵繼續");
                 return;
             }
-            else if (YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+            else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
             {
                 Console.WriteLine($"真的確定刪除上述路徑資料夾? Y/N");
                 YN = Console.ReadLine();
-                if (YN.ToUpper() == "N" | YN.ToUpper() == "NO")
+                if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
                 {
                     Console.WriteLine("已結束程式，按ENTER鍵繼續");
                     return;
                 }
-                else if (YN.ToUpper() == "Y" | YN.ToUpper() == "YES")
+                else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                 {
                     Console.WriteLine("正在刪除...");
                     DateTime startTime = DateTime.Now;
