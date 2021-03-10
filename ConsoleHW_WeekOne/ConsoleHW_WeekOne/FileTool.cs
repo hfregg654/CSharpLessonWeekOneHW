@@ -277,8 +277,9 @@ namespace ConsoleHW_WeekOne
         public static void DeleteFolder(string[] path)                                      //刪除資料夾，先檢查檔案存在與否，並向使用者做二次確認
         {
             List<string> NotExists = new List<string>();                                    //另外創建一個集合收集無法辨認的檔案位置，並在最後做輸出
-            Console.WriteLine($"確定刪除上述路徑資料夾? Y/N");
-            string YN = Console.ReadLine();                                                 //並在開始刪除前後紀錄時間最後做程式執行的時間
+            TimeSpan ts = new TimeSpan();                                                   
+            Console.WriteLine($"確定刪除上述路徑資料夾? Y/N");                              //創建一個時間單位儲存每個處理經過的時間，每次處理後輸出並在最後輸出總時間
+            string YN = Console.ReadLine();                                                 
             if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
             {
                 Console.WriteLine("已結束程式，按ENTER鍵繼續");
@@ -295,18 +296,72 @@ namespace ConsoleHW_WeekOne
                 }
                 else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
                 {
-                    Console.WriteLine("正在刪除...");
-                    DateTime startTime = DateTime.Now;
                     foreach (var item in path)
                     {
                         if (!Directory.Exists(item))
                             NotExists.Add(item);
                         else
-                            Directory.Delete(item);
+                        {
+                            List<string> AllFolder = new List<string>();
+                            foreach (string f in Directory.GetFileSystemEntries(item))
+                            {
+                                AllFolder.Add(f);
+                            }
+                            if (AllFolder.ToArray().Length != 0)
+                            {
+                                if (File.Exists(AllFolder.ToArray()[0]) || Directory.Exists(AllFolder.ToArray()[0]))
+                                {
+                                    Console.WriteLine($"偵測到{item}路徑資料夾內有其他檔案，是否繼續刪除? Y/N");
+                                    YN = Console.ReadLine();
+                                    if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
+                                    {
+                                        Console.WriteLine("進入下一個資料夾");
+                                        continue;
+                                    }
+                                    else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
+                                    {
+                                        Console.WriteLine($"真的確定刪除{item}路徑資料夾內所有檔案? Y/N");
+                                        YN = Console.ReadLine();
+                                        if (YN.ToUpper() == "N" || YN.ToUpper() == "NO")
+                                        {
+                                            Console.WriteLine("進入下一個資料夾");
+                                            continue;
+                                        }
+                                        else if (YN.ToUpper() == "Y" || YN.ToUpper() == "YES")
+                                        {
+                                            Console.WriteLine("正在刪除...");
+                                            DateTime startTime = DateTime.Now;
+                                            foreach (string iteminfolder in AllFolder)
+                                            {
+                                                if (File.Exists(iteminfolder))
+                                                {
+                                                    File.Delete(iteminfolder);
+                                                }
+                                                else
+                                                {
+                                                    //迴圈遞迴刪除子資料夾 
+                                                    DeleteSrcFolder(iteminfolder);
+                                                }
+                                            }
+                                            DateTime endTime = DateTime.Now;
+                                            ts += endTime - startTime;
+                                            Console.WriteLine($"已刪除{item}花費{ts.TotalSeconds}秒");
+                                        }
+                                        Directory.Delete(item);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                DateTime startTime = DateTime.Now;
+                                Directory.Delete(item);
+                                DateTime endTime = DateTime.Now;
+                                ts += endTime - startTime;
+                                Console.WriteLine($"已刪除{item}花費{ts.TotalSeconds}秒");
+                            }
+                        }
                     }
                     NotExists.RemoveAt(0);
-                    DateTime endTime = DateTime.Now;
-                    TimeSpan ts = endTime - startTime;
                     if (NotExists.ToArray().Length == 0)
                     {
                         Console.WriteLine($"刪除完成，共花費{ts.TotalSeconds}秒，按ENTER鍵繼續");
@@ -321,6 +376,35 @@ namespace ConsoleHW_WeekOne
                     Console.WriteLine("未輸入正確指令，已結束程式，按ENTER鍵繼續");
             }
         }
-
+        public static void DeleteSrcFolder(string file)
+        {
+            //去除資料夾和子檔案的只讀屬性
+            //去除資料夾的只讀屬性
+            System.IO.DirectoryInfo fileInfo = new DirectoryInfo(file);
+            fileInfo.Attributes = FileAttributes.Normal & FileAttributes.Directory;
+            //去除檔案的只讀屬性
+            System.IO.File.SetAttributes(file, System.IO.FileAttributes.Normal);
+            //判斷資料夾是否還存在
+            if (Directory.Exists(file))
+            {
+                foreach (string f in Directory.GetFileSystemEntries(file))
+                {
+                    if (File.Exists(f))
+                    {
+                        //如果有子檔案刪除檔案
+                        File.Delete(f);
+                    }
+                    else
+                    {
+                        //迴圈遞迴刪除子資料夾 
+                        DeleteSrcFolder(f);
+                    }
+                }
+                //刪除空資料夾
+                Directory.Delete(file);
+            }
+        }
     }
+
+
 }

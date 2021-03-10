@@ -67,19 +67,30 @@ namespace ConsoleHW_WeekOne
                                 Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                             break;
                         case "deletefile":
-                            FileTool.DeleteFile(Args.ToArray());
+                            if (Args.ToArray().Length > 1)
+                            {
+                                FileTool.DeleteFile(Args.ToArray());
+                            }
+                            else
+                                Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                             break;
                         case "createfolder":
                             if (Args.ToArray().Length == 2)
                             {
+
                                 FileTool.CreateFolder(Args[1]);
                             }
                             else
                                 Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                     break;
                         case "deletefolder":
-                            FileTool.DeleteFolder(Args.ToArray());
-                            break;
+                            if (Args.ToArray().Length > 1)
+                            {
+                                FileTool.DeleteFolder(Args.ToArray());
+                            }
+                            else
+                                Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
+                                break;
                         default:
                             Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                             break;
@@ -121,7 +132,12 @@ namespace ConsoleHW_WeekOne
                                     Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                                 break;
                             case "deletefile":
-                                FileTool.DeleteFile(Args);
+                                if (Args.Length > 1)
+                                {
+                                    FileTool.DeleteFile(Args);
+                                }
+                                else
+                                    Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                                 break;
                             case "createfolder":
                                 if (Args.Length == 2)
@@ -132,8 +148,13 @@ namespace ConsoleHW_WeekOne
                                     Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                                 break;
                             case "deletefolder":
-                                FileTool.DeleteFolder(Args);
-                                break;
+                                if (Args.Length > 1)
+                                {
+                                    FileTool.DeleteFolder(Args);
+                                }
+                                else
+                                    Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
+                        break;
                             default:
                                 Console.WriteLine("必須是正確的參數，按ENTER鍵繼續");
                                 break;
